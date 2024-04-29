@@ -11,7 +11,7 @@ mongoose.connect('mongodb+srv://drguru750:yellowmanga@details.ptwvafg.mongodb.ne
         console.log("Databases has been connected");
     })
     .catch(() => {
-        console.log("Databases not connecteds");
+        console.log("Databases not connected");
     })
 
 const UserSchema = new mongoose.Schema({
@@ -34,7 +34,7 @@ const Collection = mongoose.model('yellowblogs', UserSchema)
 const payCollection = mongoose.model('payments', paySchema);
 app.use(express.json());
 app.use(cors());
-//users
+
 app.post('/posting', async (req, resp) => {
     try {
         const user = new Collection(req.body);
@@ -46,7 +46,7 @@ app.post('/posting', async (req, resp) => {
         console.log(e);
     }
 })
-//payments
+
 app.post('/pay', async (req, resp) => {
     try {
         const user = new payCollection(req.body);
@@ -58,7 +58,7 @@ app.post('/pay', async (req, resp) => {
         console.log(e);
     }
 })
-//login
+
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
