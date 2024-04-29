@@ -6,7 +6,7 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
-mongoose.connect('mongodb+srv://drguru750:<password>@details.ptwvafg.mongodb.net/?retryWrites=true&w=majority&appName=Details')
+mongoose.connect('mongodb+srv://drguru750:yellowmanga@details.ptwvafg.mongodb.net/?retryWrites=true&w=majority&appName=Details')
     .then(() => {
         console.log("Databases has been connected");
     })
