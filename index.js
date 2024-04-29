@@ -11,7 +11,7 @@ mongoose.connect('mongodb+srv://drguru750:yellowmanga@details.ptwvafg.mongodb.ne
         console.log("Databases has been connected");
     })
     .catch(() => {
-        console.log("Databases not connected");
+        console.log("Databases not connecteds");
     })
 
 const UserSchema = new mongoose.Schema({
