@@ -6,7 +6,7 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
-mongoose.connect('mongodb+srv://drguru750:8858@lakshmigarden.ony18xo.mongodb.net/?retryWrites=true&w=majority&appName=lakshmigarden')
+mongoose.connect('mongodb+srv://drguru750:<password>@details.ptwvafg.mongodb.net/?retryWrites=true&w=majority&appName=Details')
     .then(() => {
         console.log("Databases has been connected");
     })
@@ -22,10 +22,19 @@ const UserSchema = new mongoose.Schema({
 
 })
 
+const paySchema = new mongoose.Schema({
+    name: { type: String },
+    email: { type: String, require: true },
+    ph: { type: Number, require: true },
+    adress: { type: String, require: true },
+    tp: { type: Number, require: true }
+})
+
 const Collection = mongoose.model('yellowblogs', UserSchema)
+const payCollection = mongoose.model('payments', paySchema);
 app.use(express.json());
 app.use(cors());
-
+//users
 app.post('/posting', async (req, resp) => {
     try {
         const user = new Collection(req.body);
@@ -37,11 +46,23 @@ app.post('/posting', async (req, resp) => {
         console.log(e);
     }
 })
+//payments
+app.post('/pay', async (req, resp) => {
+    try {
+        const user = new payCollection(req.body);
+        const result = await user.save();
+        const dataSending = result.toObject();
+        resp.send(dataSending);
+    }
+    catch (e) {
+        console.log(e);
+    }
+})
 //login
 app.post('/login', async (req, res) => {
-    const { email, password1 } = req.body;
+    const { email, password } = req.body;
     try {
-        const user = await Collection.findOne({ email, password1 });
+        const user = await Collection.findOne({ email, password });
         if (user) {
             res.status(200).json({ success: true, message: 'Login successful' });
         } else {
