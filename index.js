@@ -5,9 +5,9 @@ const cors = require('cors');
 const port = process.env.PORT || 5000;
 
 const app = express();
-//mongodb://127.0.0.1:27017/YellowManga
-//mongodb+srv://drguru750:yellowmanga@details.ptwvafg.mongodb.net/?retryWrites=true&w=majority&appName=Details
-mongoose.connect('mongodb://127.0.0.1:27017/YellowManga')
+
+
+mongoose.connect('mongodb+srv://drguru750:yellowmanga@details.ptwvafg.mongodb.net/?retryWrites=true&w=majority&appName=Details')
     .then(() => {
         console.log("Databases has been connected");
     })
