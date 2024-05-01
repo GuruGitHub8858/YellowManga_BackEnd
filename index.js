@@ -42,9 +42,7 @@ const Collection = mongoose.model('yellowblogs', UserSchema)
 const AdressDetails = mongoose.model('adressDetails', addressSchema)
 const payCollection = mongoose.model('payments', cardSchema);
 app.use(express.json());
-app.use(cors({
-    origin: 'https://main.d1rws20ij2f7jd.amplifyapp.com'
-}));
+app.use(cors());
 app.post('/posting', async (req, resp) => {
     try {
         const user = new Collection(req.body);
